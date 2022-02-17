@@ -14,7 +14,7 @@ import java.io.*;
         요소들을 차례로 pop 시킨다.(그래야지 순서대로 출력할 수 있다.)
 */
 
-public class Main{
+public class Main_17298_오큰수{
     static int N;
     static int[] arr;
     static Stack<Integer> s = new Stack<>();
