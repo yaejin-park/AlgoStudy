@@ -5,8 +5,8 @@ import java.io.InputStreamReader;
 import java.util.LinkedList;
 import java.util.Queue;
 
-/**
- * 1. Queue를 사용하는 문제
+/** 모든 트럭이 다리를 건너는 최단시간을 구하는 문제
+ * 1. Queue를 사용
  * 2. 최초 queue에 다리 길이 만큼 0을 채운다.
  * 3. 모든 트럭이 다리 위에 올라갈때까지 반복한다
  * 	1)queue.poll
@@ -19,7 +19,7 @@ public class Main_13335_트럭 {
 	static int W,L,N;	//w == 길이, l == 하중, n == 기차 수
 	static int time = 0;
 	static int inQTruckCnt=0;
-	static int inQTruckWeight=0;
+	static int inQTruckWeight=0;		//다리 위에 올라와있는 트럭의 무개 합
 	static int arr[];
 	static Queue<Integer> queue;
 	public static void main(String[] args) throws Exception {
@@ -51,11 +51,14 @@ public class Main_13335_트럭 {
 		// 마지막 트럭이 다리위에 올라갈때까지 반복
 		while(arrIndex != N) {		
 			time++;
+			
+			//다리에서 빠져나오기
 			poll = queue.poll();
 			if(poll != 0) {	//트럭이 다리를 빠져나왔으면
 				inQTruckWeight-=poll;
 			}
 			
+			//다리에 넣기
 			int truck = arr[arrIndex];
 			if(isBridgeAvailable(truck)) {	//트럭이 다리위에 올라갈 수 있으면
 				queue.offer(truck);
