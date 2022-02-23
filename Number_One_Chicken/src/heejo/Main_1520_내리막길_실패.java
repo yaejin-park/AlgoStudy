@@ -19,7 +19,7 @@ import java.util.StringTokenizer;
  * 
  * 시간초과를 해결할 방법은 무엇이 있을까요...
  */
-public class Main_G4_1520_내리막길_실패 {
+public class Main_1520_내리막길_실패 {
 	static int M, N;	//지도 세로와 가로
 	static int map[][];	//지도 배열
 	static int H;	//최종 경로 수 
