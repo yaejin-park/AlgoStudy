@@ -1,4 +1,4 @@
-package heejo;
+package group_study;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
