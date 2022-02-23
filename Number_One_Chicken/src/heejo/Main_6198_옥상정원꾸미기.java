@@ -1,5 +1,4 @@
-package group_study;
-
+package heejo;
 import java.util.Scanner;
 import java.util.Stack;
 
