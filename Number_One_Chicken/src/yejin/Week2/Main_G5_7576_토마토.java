@@ -1,4 +1,4 @@
-package yejin;
+package yejin.Week2;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -76,17 +76,18 @@ public class Main_G5_7576_토마토 {
 		// 큐가 차있는 동안 계속 반복
 		while (!queue.isEmpty()) {
 			Tomato t = queue.poll();
+			// 익은 토마토로 표시
+			map[t.r][t.c] = 1;
+			
 			for (int i = 0; i < 4; i++) {
 				int nr = t.r + dr[i];
 				int nc = t.c + dc[i];
 
 				// 경계검사 통과 & 안익은 토마토면,
 				if (nr < N && nr >= 0 && nc < M && nc >= 0 && map[nr][nc] == 0) {
-					map[nr][nc] = 1;
-					reapCount++; // 익은 토마토갯수 증가
+					map[nr][nc] = 1;	//익은토마토로 중복체크
+					reapCount++; 		// 익은 토마토갯수 증가
 					queue.offer(new Tomato(nr, nc, t.day + 1));
-					// 익은 토마토로 표시
-					map[t.r][t.c] = 1;
 				}
 			}
 			// 며칠 걸렸는지 넣기

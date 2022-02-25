@@ -1,4 +1,4 @@
-package yejin;
+package yejin.Week2;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -30,7 +30,7 @@ public class Main_S1_1926_그림 {
 	static int dc[] = {0, 0, -1, 1};
 	
 	static int cnt = 0;		//총 도화지 개수
-	static int width = 0;		//총 가장 넓은 도화지 넓이
+	static int width = 0;	//총 가장 넓은 도화지 넓이
 	static int eleWidth;	//각각의 넓이
 
 	public static void main(String[] args) throws IOException {
@@ -54,9 +54,9 @@ public class Main_S1_1926_그림 {
 		
 		for (int i = 0; i < n; i++) {
 			for (int j = 0; j < m; j++) {
-				eleWidth = 0;	//각각의 넓이
 				//방문하지 않았으면 & map에서 참이면 (첫시작)
 				if(!isVisited[i][j] && map[i][j]) {
+					eleWidth = 0;	//각각의 넓이
 					eleWidth++;
 					cnt++;
 					

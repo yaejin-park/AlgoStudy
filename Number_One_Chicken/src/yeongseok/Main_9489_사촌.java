@@ -33,7 +33,7 @@ public class Main_9489_사촌 {
 			
 			if(N == 0 && K == 0) break;
 			
- 			split = br.readLine().split(" ");
+			split = br.readLine().split(" ");
  			
  			
  			cnt=0;
