@@ -1,4 +1,4 @@
-package group_study;
+package heejo;
 
 import java.util.Arrays;
 import java.util.Scanner;
