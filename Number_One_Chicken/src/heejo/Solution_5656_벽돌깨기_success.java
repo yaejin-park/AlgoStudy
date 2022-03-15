@@ -1,4 +1,4 @@
-package group_study;
+package heejo;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -24,7 +24,7 @@ import java.util.StringTokenizer;
  * @author joy96
  *
  */
-public class Solution_5656_벽돌깨기 {
+public class Solution_5656_벽돌깨기_success {
 	static int map_origin[][];
 	static int map_temp[][];
 	static boolean map_selected_origin[][];
