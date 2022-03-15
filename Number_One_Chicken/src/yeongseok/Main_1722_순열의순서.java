@@ -45,7 +45,12 @@ public class Main_1722_순열의순서 {
 			cnt++;
 			return;
 		}
-		
+		//1 2 3 4 5
+		//[1] ~ => 더하기
+		//[2] [4] [5] [1] [3]
+		//[2] [1] =>
+		//[1] [2] [3] [4] [5]
+		//[1] [2] [3] [5] [4]
 		int k = target[targetIndex];
 		int groupIndex=0;
 		for(int i = 0 ; i < N; i++) {
@@ -78,6 +83,8 @@ public class Main_1722_순열의순서 {
 	 * @param index 순열의 위치
 	 * @param num 순열을 만들 집합 원소의 개수
 	 */
+
+	
 	 public static void recursive1(long index, int num){
 	 	if( num == 1 ){
 	 		printGroupNumber(0);
