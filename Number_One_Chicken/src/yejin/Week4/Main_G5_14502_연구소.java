@@ -12,7 +12,7 @@ import java.util.StringTokenizer;
  */
 public class Main_G5_14502_연구소 {
 	static int N, M;
-	static int virus[][] = new int[10][2]; //바이러스의 좌표
+	static int virus[][] = new int[10][2]; //바이러스의 좌표(바이러스 개수 10개가 최대니까)
 	
 	//상하좌우 델타배열
 	static int dr[] = {-1,1,0,0};
@@ -20,7 +20,8 @@ public class Main_G5_14502_연구소 {
 	
 	static int [][]map;	//맵 배열
 	
-	static int safe, tempSafe, virusIdx, maxSafe; //0 개수, 임시 0개수, 바이러스 인덱스(바이러스 좌표 배열활용하기위한), 최대 0의 개수
+	//0 개수, 임시 0개수, 바이러스 인덱스(바이러스 좌표 배열활용하기위한), 최대 0의 개수
+	static int safe, tempSafe, virusIdx, maxSafe; 
 
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -44,6 +45,7 @@ public class Main_G5_14502_연구소 {
 				if(cur ==0) {		//0(빈방)개수 저장
 					safe++;
 				} else if(cur==2) {	//바이러스 개수 저장
+					//바이러스좌표 저장(다 돌면서하면 너무 많이 걸리니까 배열로 저장해놓기)
 					virus[virusIdx][0] = i;
 					virus[virusIdx][1] = j;
 					virusIdx++;		//바이러스 좌표를 저장하기 위한 인덱스
@@ -61,6 +63,7 @@ public class Main_G5_14502_연구소 {
 	private static void combi(int cnt) {
 		//벽 3개 고르면
 		if(cnt==3) {
+			//벽을 map에 세우면 리셋불가니까 복사(근데 이거 인자로 해서 하는 방법..궁금해)
 			int [][] tempMap = new int [N][M];
 			//!!!깊은 배열복사로 해야지, 그냥 tempMap = map하면 얕은복사가되어서 map이 바뀌어버림..!!
 			for (int i = 0; i < N; i++) {
@@ -106,11 +109,10 @@ public class Main_G5_14502_연구소 {
 			int cc = c+dc[i];
 			//경계검사 & 임시 맵에서 0이면 들어가서 감염시키기
 			if(cr>=0 && cr<N && cc>=0 && cc<M && tempMap[cr][cc]==0) {
-				tempMap[cr][cc]=2;
+				tempMap[cr][cc]=2;		//0을 바이러스로 감염
 				tempSafe--;				//임시 0개수 감소
 				dfs(cr,cc, tempMap);	//시작점 좌표와 맵 보내기
 			}
 		}
 	}
-
 }

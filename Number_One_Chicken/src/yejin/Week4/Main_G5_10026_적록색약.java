@@ -5,6 +5,18 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Arrays;
 
+/*
+ * 	일반: 빨간색, 초록색, 파란색
+ *  적록색약 : 빨간색 = 초록색, 파란색
+ *  
+ *  색상 상하좌우로 인접하면 같은 구역(+색상차이 못느껴도 같은 구역)
+ *  
+ *  풀이방법
+ *  1. 시작점을 반복하면서 방문안했으면 시작점부터 dfs돌기 (시작점들어가면 카운트 증가)
+ *  2. dfs에서 같은 색상(적록색약은 색상차이 못느끼면) 계속 방문체크하면서 돌기
+ *  
+ */
+
 public class Main_G5_10026_적록색약 {
 	//델타 배열
 	static int dr[] = {-1, 1, 0, 0};
@@ -24,6 +36,7 @@ public class Main_G5_10026_적록색약 {
 		map = new char [N][N];
 		visited = new boolean [N][N];
 		
+		//맵 받기
 		for (int i = 0; i < N; i++) {
 			String str = br.readLine();
 			for (int j = 0; j < N; j++) {
@@ -32,7 +45,7 @@ public class Main_G5_10026_적록색약 {
 		}
 		br.close();
 		
-		//일반
+		//일반사람 체크 시작 점 반복하면서 dfs 호출
 		for (int i = 0; i < N; i++) {
 			for (int j = 0; j < N; j++) {
 				//방문안했으면
@@ -48,7 +61,7 @@ public class Main_G5_10026_적록색약 {
 			Arrays.fill(visited[i], false);
 		}
 		
-		//적록색약
+		//적록색약 체크 시작 점 반복하면서 dfs 호출
 		for (int i = 0; i < N; i++) {
 			for (int j = 0; j < N; j++) {
 				//방문안했으면
@@ -61,7 +74,7 @@ public class Main_G5_10026_적록색약 {
 		System.out.println(no+" "+yes);
 	}
 	
-	//일반 사람이 보는 갯수 구하는 함수
+	//일반 사람이 보는 갯수 구하는 함수(dfs)
 	private static void no(int r, int c) {
 		char color = map[r][c];
 		
@@ -77,7 +90,7 @@ public class Main_G5_10026_적록색약 {
 		}
 	}
 	
-	//적록색약인 사람이 보는 갯수 구하는 함수
+	//적록색약인 사람이 보는 갯수 구하는 함수(dfs)
 	private static void yes(int r, int c) {
 		char color = map[r][c];
 		
