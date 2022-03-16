@@ -4,16 +4,16 @@ import java.util.Arrays;
 import java.util.StringTokenizer;
 
 /**
- * ³¬½ÃÅÍ ÀÚ¸®Àâ±â
+ * ë‚šì‹œí„° ìë¦¬ì¡ê¸°
  * 
- * ÃâÀÔ±¸¿¡ µû¸¥ ÀÔÀå ¹æ½ÄÀº ÃÑ 6°¡Áö
+ * ì¶œì…êµ¬ì— ë”°ë¥¸ ì…ì¥ ë°©ì‹ì€ ì´ 6ê°€ì§€
  * 
  * @author joy96
  *
  */
 class Solution1 {
 
-	// ¼ø¿­[6][3]
+	// ìˆœì—´[6][3]
 	static int permutation[][] = {{1, 2, 3}, {1, 3, 2}, { 2, 1, 3 }, { 2, 3, 1 }, { 3, 1, 2 }, { 3, 2, 1 }};
 	static int minLength;
 	static int myPlace[];
@@ -28,86 +28,86 @@ class Solution1 {
 			exit_locate_people = new int[3][2];
 			for (int i = 0; i < 3; i++) {
 				StringTokenizer str = new StringTokenizer(br.readLine());
-				exit_locate_people[i][0] = Integer.parseInt(str.nextToken()) - 1; // ÃâÀÔ±¸iÀÇ À§Ä¡
-				exit_locate_people[i][1] = Integer.parseInt(str.nextToken()); // ÃâÀÔ±¸iÀÇ »ç¶÷µé
+				exit_locate_people[i][0] = Integer.parseInt(str.nextToken()) - 1; // ì¶œì…êµ¬iì˜ ìœ„ì¹˜
+				exit_locate_people[i][1] = Integer.parseInt(str.nextToken()); // ì¶œì…êµ¬iì˜ ì‚¬ëŒë“¤
 			}
 			minLength = Integer.MAX_VALUE;
 			
-			// 6°¡Áö °æ¿ìÀÇ ¼ö¸¦ ÀüºÎ °è»êÇØº¸±â
+			// 6ê°€ì§€ ê²½ìš°ì˜ ìˆ˜ë¥¼ ì „ë¶€ ê³„ì‚°í•´ë³´ê¸°
 			for (int i = 0; i < 6; i++) {
-				myPlace = new int[N]; // ³¬½Ã²ÛµéÀÇ ÀÚ¸®
-				fill(0, permutation[i]);	//°è»êÇÏ±â
+				myPlace = new int[N]; // ë‚šì‹œê¾¼ë“¤ì˜ ìë¦¬
+				fill(0, permutation[i]);	//ê³„ì‚°í•˜ê¸°
 			}
 			
-			System.out.println("#" + test_case + " " + minLength);	//°á°ú°ª Ãâ·Â
+			System.out.println("#" + test_case + " " + minLength);	//ê²°ê³¼ê°’ ì¶œë ¥
 		}
 	}
 
 	public static void fill(int cnt, int turn[]) {
-		//¸ğµç ³¬½Ã²ÛµéÀÌ µé¾î°¬´Ù¸é
+		//ëª¨ë“  ë‚šì‹œê¾¼ë“¤ì´ ë“¤ì–´ê°”ë‹¤ë©´
 		if (cnt == 3) {
-			//°Å¸®¸¦ °è»êÇÏ±â
+			//ê±°ë¦¬ë¥¼ ê³„ì‚°í•˜ê¸°
 			int totalDistance = 0;
 			for(int i =0; i<N; i++) {
 				if(myPlace[i]>0) {
-					//ÇØ´ç À§Ä¡ÀÇ ³¬½Ã²Û°ú ±× ³¬½Ã²ÛÀÌ µé¾î¿Â °ÔÀÌÆ®¿Í °Å¸® °è»êÇÏ¿© ´õÇÏ±â
+					//í•´ë‹¹ ìœ„ì¹˜ì˜ ë‚šì‹œê¾¼ê³¼ ê·¸ ë‚šì‹œê¾¼ì´ ë“¤ì–´ì˜¨ ê²Œì´íŠ¸ì™€ ê±°ë¦¬ ê³„ì‚°í•˜ì—¬ ë”í•˜ê¸°
 					totalDistance += Math.abs(exit_locate_people[myPlace[i]-1][0]-i)+1;
 				}
 			}
-			//ÃÖ¼Ò°ª ºñ±³ÇÏ±â
+			//ìµœì†Œê°’ ë¹„êµí•˜ê¸°
 			minLength = Math.min(minLength, totalDistance);
 			return;
 		}
 		else {
-			int gateWhere = exit_locate_people[turn[cnt] - 1][0];	//ÇöÀç °ÔÀÌÆ®°¡ ¾îµğ¿¡ À§Ä¡ÇØ ÀÖ´ÂÁö
-			int gatePeople = exit_locate_people[turn[cnt] - 1][1];	//ÇöÀç °ÔÀÌÆ®¿¡ »ç¶÷ÀÌ ¸î¸í ±â´Ù¸®´ÂÁö
+			int gateWhere = exit_locate_people[turn[cnt] - 1][0];	//í˜„ì¬ ê²Œì´íŠ¸ê°€ ì–´ë””ì— ìœ„ì¹˜í•´ ìˆëŠ”ì§€
+			int gatePeople = exit_locate_people[turn[cnt] - 1][1];	//í˜„ì¬ ê²Œì´íŠ¸ì— ì‚¬ëŒì´ ëª‡ëª… ê¸°ë‹¤ë¦¬ëŠ”ì§€
 
-			int restPeople = gatePeople;	//ÇöÀç °ÔÀÌÆ®¿¡ ³²Àº »ç¶÷ÀÌ ¸î¸íÀÎÁö
+			int restPeople = gatePeople;	//í˜„ì¬ ê²Œì´íŠ¸ì— ë‚¨ì€ ì‚¬ëŒì´ ëª‡ëª…ì¸ì§€
 			int i = 0;
 			while (true) {
 				if (i > N) {
-					//[ÀÌ ¿¡·¯°¡ ¶á´Ù¸é] Æ²¸°°ÍÀÌ´Ù.
+					//[ì´ ì—ëŸ¬ê°€ ëœ¬ë‹¤ë©´] í‹€ë¦°ê²ƒì´ë‹¤.
 					return;
 				}
-				//¼ıÀÚµéÀÌ ¼º°øÀûÀ¸·Î Ã¤¿öÁ³´Ù¸é ´ÙÀ½ °ÔÀÌÆ®·Î ³Ñ¾î°¡ÀÚ.
+				//ìˆ«ìë“¤ì´ ì„±ê³µì ìœ¼ë¡œ ì±„ì›Œì¡Œë‹¤ë©´ ë‹¤ìŒ ê²Œì´íŠ¸ë¡œ ë„˜ì–´ê°€ì.
 				if (restPeople == 0) {
 					fill(cnt + 1, turn);
 					return;
 				}
-				// ¸¸¾à °³¼ö°¡ 1°³ ³²¾Ò´Âµ¥, ´ëÄªÀ¸·Î Ã¤¿öÁú ¼ö ÀÖ´Â »óÈ²ÀÌ¶ó¸é
+				// ë§Œì•½ ê°œìˆ˜ê°€ 1ê°œ ë‚¨ì•˜ëŠ”ë°, ëŒ€ì¹­ìœ¼ë¡œ ì±„ì›Œì§ˆ ìˆ˜ ìˆëŠ” ìƒí™©ì´ë¼ë©´
 				if ((restPeople == 1)) {
 					if ((gateWhere + i < N) && (myPlace[gateWhere + i] == 0) && (gateWhere - i >= 0) && (myPlace[gateWhere - i] == 0)) {
 						int tempPlace[] = new int[N];
 						for (int j = 0; j < N; j++) {
 							tempPlace[j] = myPlace[j];
 						}
-						//1. ¿À¸¥ÂÊÀ» Ã¤¿ö¼­ ´ÙÀ½ °ÔÀÌÆ®·Î ³Ñ¾î°¡°í
+						//1. ì˜¤ë¥¸ìª½ì„ ì±„ì›Œì„œ ë‹¤ìŒ ê²Œì´íŠ¸ë¡œ ë„˜ì–´ê°€ê³ 
 						myPlace[gateWhere + i] = turn[cnt];
 						fill(cnt + 1, turn);
 						
-						//ÃÊ±âÈ­ÇÑ ´ÙÀ½¿¡
+						//ì´ˆê¸°í™”í•œ ë‹¤ìŒì—
 						for (int j = 0; j < N; j++) {
 							myPlace[j] = tempPlace[j];
 						}
 						
-						//2. ¿ŞÂÊÀ» Ã¤¿ö¼­ ´ÙÀ½ °ÔÀÌÆ®·Î ³Ñ¾î°£´Ù.
+						//2. ì™¼ìª½ì„ ì±„ì›Œì„œ ë‹¤ìŒ ê²Œì´íŠ¸ë¡œ ë„˜ì–´ê°„ë‹¤.
 						myPlace[gateWhere - i] = turn[cnt];
 						fill(cnt + 1, turn);
 						return;
 					}
 				}
-				//¿À¸¥ÂÊ¿¡ Ã¤¿ï ¼ö ÀÖ´Â »óÈ²ÀÌ¶ó¸é Ã¤¿î´Ù
+				//ì˜¤ë¥¸ìª½ì— ì±„ìš¸ ìˆ˜ ìˆëŠ” ìƒí™©ì´ë¼ë©´ ì±„ìš´ë‹¤
 				if ((gateWhere + i < N) && (myPlace[gateWhere + i] == 0)) {
 					myPlace[gateWhere + i] = turn[cnt];
 					restPeople--;
 				}
 				
-				//¿ŞÂÊ¿¡ Ã¤¿ï ¼ö ÀÖ´Â »óÈ²ÀÌ¶ó¸é Ã¤¿î´Ù
+				//ì™¼ìª½ì— ì±„ìš¸ ìˆ˜ ìˆëŠ” ìƒí™©ì´ë¼ë©´ ì±„ìš´ë‹¤
 				if ((gateWhere - i >= 0) && (myPlace[gateWhere - i] == 0)) {
 					myPlace[gateWhere - i] = turn[cnt];
 					restPeople--;
 				}
-				//i Áõ°¡
+				//i ì¦ê°€
 				i++;
 			}
 		}
