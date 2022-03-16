@@ -84,6 +84,7 @@ public class Solution_보물상자 {
 					queue.addFirst(last);
 				}
 			}
+			
 			//해시맵 -> 우선순위큐로 다시넣기(내림차순 정렬)
 			for(int su : set) {
 				pq.add(su);

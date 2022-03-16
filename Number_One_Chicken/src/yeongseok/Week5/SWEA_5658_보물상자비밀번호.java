@@ -9,7 +9,7 @@ import java.util.StringTokenizer;
 
 public class SWEA_5658_보물상자비밀번호 {
 	static int T,N,K,numLen;
-	public static void main(String[] args) throws Exception{
+	public static void main(String[] args) throws Exception {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StringTokenizer st;
 		
@@ -66,10 +66,7 @@ public class SWEA_5658_보물상자비밀번호 {
 				pq.poll();
 			}
 			System.out.println("#"+t + " " + pq.peek());
-			
-			
 		}
-		
 	}
 	/**
 	 * c -> hex digit으로 변환하는 함수
