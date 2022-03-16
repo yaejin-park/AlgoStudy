@@ -83,7 +83,6 @@ public class Solution_5656_벽돌 {
 				Object tempArr[] = map.toArray();
 				
 				for (int j = 0; j < tempArr.length; j++) {
-//					System.out.println(tempArr[j].indexof());
 //					tempMap.add();
 				}
 //				

@@ -83,9 +83,10 @@ public class Solution_5650_핀볼 {
 			tempScore++; //점수 +1
 			//방향바꾸기
 			d = changeDirect(d, -2);
-			//첫시작점으로 돌아옴?
+			//첫시작점으로 돌아옴? (벽부딪치고 시작점)
 			if(cr+dr[d] == start[0] || cc+dc[d] == start[1]) {
 				tempScore--;
+				System.out.println("벽 -> 시작점 리턴");
 				return;
 			}
 		} else {
@@ -94,11 +95,15 @@ public class Solution_5650_핀볼 {
 			System.out.println("meet"+meet);
 			if (meet == 0) {
 				
-			}else if(meet >=1 && meet==5) {	//블럭
+			}else if(meet >=1 && meet<=5) {	//블럭
 				tempScore++;
 				d = changeDirect(d, meet);
-				cr += dr[d];
-				cc += dr[d];
+				//블럭 부딪치고 시작점
+				if(cr+dr[d] == start[0] || cc+dc[d] == start[1]) {
+					tempScore--;
+					System.out.println("블록 -> 시작점 리턴");
+					return;
+				}
 			}else if(meet >=6 && meet <=10) {//웜홀
 				if(cr == worm[meet][0].row && cc == worm[meet][0].col) {
 					//위치이동
