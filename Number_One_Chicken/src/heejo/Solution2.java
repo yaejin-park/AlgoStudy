@@ -60,13 +60,11 @@ public class Solution2 {
 	static int minDistance;
 	public static void permutation(int cnt) {
 		if(cnt==M) {
-//			System.out.print(Arrays.toString(selected));
 			int distance = monsterAndCustomer[selected[0]][0] + monsterAndCustomer[selected[0]][1];
 			for(int i =1; i<M; i++) {
 				distance += Math.abs(monsterAndCustomer[selected[i]][0]-monsterAndCustomer[selected[i-1]][0])
 						+Math.abs(monsterAndCustomer[selected[i]][1]-monsterAndCustomer[selected[i-1]][1]);
 			}
-//			System.out.println(" : " + distance);
 			minDistance = Math.min(minDistance, distance);
 			return;
 		}
