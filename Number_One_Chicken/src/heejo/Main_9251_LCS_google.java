@@ -53,7 +53,7 @@ public class Main_9251_LCS_google {
 			else {
 				//일치하는 문자를 찾았다면
 				if (str2.charAt(j) == str1.charAt(0)) {
-					found = 1;	//found변수 1로 변경
+					found = 1;			//found변수 1로 변경
 					array[0][j] = 1;	//해당 배열부터 1로 처리
 				}
 			}
