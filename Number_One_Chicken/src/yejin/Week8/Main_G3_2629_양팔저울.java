@@ -13,7 +13,7 @@ import java.util.StringTokenizer;
  * 2. 알고리즘 분류 -> 배낭문제..
  * 
  * 구글링
- * 1. 추 하나 그랟로
+ * 1. 추 하나 그대로
  * 2. 현재 추 + 새로운 추
  * 3. 현재추 : 반대편 새로운 추
  * 
@@ -48,23 +48,15 @@ public class Main_G3_2629_양팔저울 {
 		
 		//구슬 입력
 		B = Integer.parseInt(br.readLine());
-		int BMax = 0;	//구슬 최대값
-		ball = new int[B];
+		st = new StringTokenizer(br.readLine());
 		for (int i = 0; i < B; i++) {
-			ball[i] = Integer.parseInt(st.nextToken());
-			BMax = Math.max(BMax, ball[i]);
-		}
-		
-		
-		
-		
-		for (int i = 0; i < B; i++) {
+			int ball= Integer.parseInt(st.nextToken());
 			
+			if(dp[C][ball]) sb.append("Y ");
+			else sb.append("N ");
 		}
-		
-		
 		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
-		bw.write("");
+		bw.write(sb.toString());
 		bw.flush();
 		bw.close();
 	}
@@ -76,10 +68,10 @@ public class Main_G3_2629_양팔저울 {
 		//추를 다 뽑으면
 		if(cnt==C) return;
 		
-		
 		//추 하나 그대로
 		dp(cnt+1, num + chu[cnt]);
-		
+		dp(cnt+1, num);
+		dp(cnt+1, Math.abs(num-chu[cnt]));
 	}
 
 }
