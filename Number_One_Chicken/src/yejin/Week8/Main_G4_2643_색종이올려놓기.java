@@ -57,7 +57,7 @@ public class Main_G4_2643_색종이올려놓기 {
 		//정렬
 		Arrays.sort(paper);
 		
-		//DP 최장 수열
+		//DP+최장 수열
 		int max = 0;
 		for (int i = 0; i < N; i++) {		//현재 수
 			LIS[i] = 1;

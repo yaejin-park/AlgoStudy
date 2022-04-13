@@ -61,6 +61,7 @@ public class Main_G3_2629_양팔저울 {
 		bw.close();
 	}
 	
+	
 	static void dp(int cnt, int num) {
 		if(dp[cnt][num] == true) return;
 		dp[cnt][num] = true;

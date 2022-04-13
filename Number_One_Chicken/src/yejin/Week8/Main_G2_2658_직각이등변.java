@@ -55,8 +55,10 @@ public class Main_G2_2658_직각이등변 {
 		
 		boolean isFirst = true;	//첫 꼭지점인지 여부
 		//맵받기
-		map = new int[11][11];
-		visit = new boolean[11][11];
+		map = new int[12][12];
+		visit = new boolean[12][12];
+		
+		boolean isExist = false;
 		
 		for (int i = 1; i < 11; i++) {
 			String str = br.readLine();
@@ -68,39 +70,44 @@ public class Main_G2_2658_직각이등변 {
 				if(isFirst && cur == 1) {
 					isFirst = false;
 					point[0] = new Point(i, j);	//꼭지점 저장
+					isExist = true;
 				}
 			}
 		}
 		
-		//테두리를 2로 채우기
-		bfs();
-		
-		//첫시작점에서 시작해서 이어지는 선 방향 찾기
-		dir = findDir(point[0].r, point[0].c);
-		
-		if(dir !=0 && dir !=1 && dir !=4 && dir ==-1) {	//첫 꼭지점에서 이어지는 선이 우, 우하, 하가 아니거나 -1이면 직각삼각형 불가
+		if(!isExist) {
 			System.out.println(0);
-		} else {										//가능성 있으면
+		} else {
+			//테두리를 2로 채우기
+			bfs();
 			
-			//직각삼각형 여부 체크 & 채워진 여부 체크
-			if(dfs(0, dir) && isTriangle() && isFilled()) {
-				Arrays.sort(point);
-				for (int i = 0; i < 3; i++) {
-					System.out.println(point[i].r+" "+point[i].c);
-				}
-			} else {
+			//첫시작점에서 시작해서 이어지는 선 방향 찾기
+			dir = findDir(point[0].r, point[0].c);
+			
+			if(dir !=0 && dir !=1 && dir !=4 && dir ==-1) {	//첫 꼭지점에서 이어지는 선이 우, 우하, 하가 아니거나 -1이면 직각삼각형 불가
 				System.out.println(0);
+			} else {										//가능성 있으면
+				//직각삼각형 여부 체크 & 채워진 여부 체크
+				if(dfs(0, dir) && isTriangle() && isFilled()) {
+					Arrays.sort(point);
+					for (int i = 0; i < 3; i++) {
+						System.out.println(point[i].r+" "+point[i].c);
+					}
+				} else {
+					System.out.println(0);
+				}
 			}
 		}
+		
 	}
 
 	//0만 탐색 1번해서 테두리 2로 바꾸기
 	private static void bfs() {
 		Queue<Point> queue = new LinkedList<>();
-		boolean [][] visited = new boolean[11][11];
+		boolean [][] visited = new boolean[12][12];
 		
-		visited[1][1] = true;
-		queue.add(new Point(1, 1));
+		visited[0][0] = true;
+		queue.add(new Point(0, 0));
 		
 		while(!queue.isEmpty()) {
 			Point cur = queue.poll();
@@ -108,7 +115,7 @@ public class Main_G2_2658_직각이등변 {
 				int nr = cur.r + dr[i];
 				int nc = cur.c + dc[i];
 				
-				if(nr<1 || nc<1 || nr>10 || nc>10 || visited[nr][nc]) continue;
+				if(nr<0 || nc<0 || nr>11 || nc>11 || visited[nr][nc]) continue;
 				visited[nr][nc] = true;
 				if(map[nr][nc]==1) map[nr][nc] = 2;
 				if(map[nr][nc]==0) queue.offer(new Point(nr, nc));
@@ -120,11 +127,11 @@ public class Main_G2_2658_직각이등변 {
 	//안이 1로 채워져있는지 여부 찾기
 	//테두리 돌면서 체크는 하니까 1이었는데 0으로 한번만 바뀌는건 가능으로 안이 채워졌는지 체크
 	private static boolean isFilled() {
-		for (int i = 0; i < 11; i++) {
+		for (int i = 0; i < 12; i++) {
 			int now = 0;
 			int change = 0;
 			
-			for (int j = 0; j < 11; j++) {
+			for (int j = 0; j < 12; j++) {
 				if(now==0 && map[i][j] >0) {
 					change++;
 					now = 1;
@@ -159,7 +166,7 @@ public class Main_G2_2658_직각이등변 {
 		Point cur = point[cnt];
 		visit[point[cnt].r][point[cnt].c] = true;
 		
-		if(!isAvailable || cnt==3) return false;	//불가능 리턴
+		if(!isAvailable || cnt==3) return isAvailable;	//불가능 리턴
 		
 		int nr = cur.r, nc = cur.c;
 		//방향 바뀔때까지
@@ -217,5 +224,4 @@ public class Main_G2_2658_직각이등변 {
 		isAvailable = false;
 		return -1;
 	}
-
 }
