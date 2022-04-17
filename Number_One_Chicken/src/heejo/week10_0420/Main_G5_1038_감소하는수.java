@@ -1,4 +1,4 @@
-package group_study;
+package heejo.week10_0420;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
