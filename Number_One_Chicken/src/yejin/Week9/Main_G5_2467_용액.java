@@ -43,7 +43,7 @@ public class Main_G5_2467_용액 {
 				b = arr[end];
 			}
 			
-			/*if(plus >0) {
+			if(plus >0) {
 				end--;
 			} else if(plus < 0) {
 				start++;
@@ -51,19 +51,19 @@ public class Main_G5_2467_용액 {
 				a = arr[start];
 				b = arr[end];
 				break;
-			}*/
-			
-			int mid = (start+end)/2;
-			
-			if(plus > 0) {
-				end = mid-1;
-			} else if(plus < 0) {
-				start = mid+1;
-			} else {
-				a = arr[start];
-				b = arr[end];
-				break;
 			}
+			
+//			int mid = (start+end)/2;
+//			
+//			if(plus > 0) {
+//				end = mid-1;
+//			} else if(plus < 0) {
+//				start = mid+1;
+//			} else {
+//				a = arr[start];
+//				b = arr[end];
+//				break;
+//			}
 		}
 		
 		System.out.println(a+" "+b);
