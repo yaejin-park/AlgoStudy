@@ -67,7 +67,7 @@ public class Main_G5_2589_보물섬 {
 				
 				if(nr<0 || nc<0 || nr>=R || nc>=C) continue;
 				
-				if(visited[nr][nc] || map[nr][nc] =='W') continue;
+				if(visited[nr][nc] || map[nr][nc] =='W') continue;	//방문했거나 바다면
 				visited[nr][nc] = true;
 				queue.offer(new Node(nr, nc, cur.time+1));
 			}
